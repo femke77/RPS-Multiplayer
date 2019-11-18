@@ -1,0 +1,35 @@
+body {
+    background-color: lightgrey;
+
+}
+
+.header {
+    height: 100px;
+    padding: 25px;
+
+}
+
+h3 {
+    text-align: center;
+}
+
+.game-output, .chat {
+    height: 300px;
+    width: 300px;
+    overflow: auto;
+    background-color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px auto;
+}
+
+.rps-btns {
+    height: 160px;
+    width: 100%;
+    padding: 50px;
+
+}
+
+button {
+    min-width: 75px;
+}
