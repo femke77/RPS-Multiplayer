@@ -10,12 +10,12 @@ body {
 }
 
 h3 {
-    text-align: center;
+    
 }
 
 .game-output, .chat {
-    height: 300px;
-    width: 300px;
+    height: 400px;
+    width: 100%;
     overflow: auto;
     background-color: white;
     padding-left: 5px;
