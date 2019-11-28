@@ -12,55 +12,66 @@ firebase.initializeApp(firebaseConfig);
 
 var database = firebase.database();
 
-$(document).ready(function () {
+var connectionsRef = database.ref("/connections");
+var connectedRef = database.ref(".info/connected");
+var numChildren = 0;
 
-    var playerOne = {
-        name: "john",
-        wins: 0,
-        losses: 0
+var playerOne = {
+    name: "",
+    wins: 0,
+    losses: 0
+}
+
+var playerTwo = {
+    name: "",
+    wins: 0,
+    losses: 0
+}
+
+
+connectedRef.on("value", function (snap) {
+    if (snap.val()) {
+        var con = connectionsRef.push(true);
+        con.onDisconnect().remove();
     }
+});
 
-    var playerTwo = {
-        name: "sally",
-        wins: 0,
-        losses: 0
-    }
-
-
-    if (playerOne.name == -1) {
-        $(".start").append(
-            $("<button/>", {
-                text: "Start Game",
-                id: "start-btn",
-                "data-toggle": "modal",
-                "data-target": "#name-modal",
-            }
-            ));
-
-    } else if (playerOne.name != -1 && playerTwo.name == -1) {
-        $(".start").append(
-            $("<button/>", {
-                text: "Join Game",
-                id: "start-btn",
-                "data-toggle": "modal",
-                "data-target": "#name-modal"
-            }
-            ));
-        
-    }
-
-    $("#save").on("click", function () {
-        if (playerOne.name == -1){
-            playerOne.name = $("#player-name").val();
-            $(".player").append("1: " + playerOne.name)
-        } else {
-            playerTwo.name = $("#player-name").val();
-            $(".player").append("2: " + playerTwo.name)
-        }
-
-
+connectionsRef.on("value", function (snap) {
+    numChildren = snap.numChildren();
+    $(".chat").text(numChildren);
+    
+    if (numChildren === 1) {
        
-    })
+    
+    } else if (numChildren === 2 ) {
+       
+    
+    } else {
+        $(".chat").text("2 are playing");
+    }
+    
+
+})
+
+//-------------------------------------------------------
+
+
+
+
+
+    
+$("#save-btn").on("click", function (event) {
+    event.preventDefault();
+    if (numChildren == 1) {
+        playerOne.name = $("#player-name").val();
+        $(".player").append(": " + playerOne.name)
+    } else {
+        playerTwo.name = $("#player-name").val();
+        $(".player").append(": " + playerTwo.name)
+
+    }
+
+});
 
 
 
@@ -71,5 +82,3 @@ $(document).ready(function () {
 
 
 
-
-});  //end doc ready

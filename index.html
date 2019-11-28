@@ -31,8 +31,10 @@
                     game output here
                 </section>
             </div>
-            <div class="col-2 text-center start">
-                <!-- for dynamic start button -->
+            <div class="col-2 text-center rps-btns">
+                    <button type="button" id="rock-btn">Rock</button>
+                    <button type="button" id="paper-btn">Paper</button>
+                    <button type="button" id="scissors-btn">Scissors</button><br />
             </div>
             <div class="col-5">
                 <h3>Chat</h3>
@@ -44,38 +46,24 @@
 
         </div>
         <div class="row">
-            <div class="col-5 text-center rps-btns">
-                <button type="button" id="rock-btn">Rock</button>
-                <button type="button" id="paper-btn">Paper</button>
-                <button type="button" id="scissors-btn">Scissors</button>
+            <div class="col-5">
+                <form>
+                    <div class="form-group">
+                        <label for="player-name"></label>
+                        <input type="text" class="form-control" id="player-name" placeholder="Name">
+                        <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
+                    </div>
 
+                </form>
             </div>
         </div>
-        <div id="name-modal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
 
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Enter your player name:</h4>
-                    </div>
-                    <div class="modal-body">
-            
-                        <!-- Form content -->
-                        <form>
-                            <div class="form-group">
-                                <label for="player-name"></label>
-                                <input type="text" class="form-control" id="player-name" placeholder="John">
-                            </div>
-                            <button type="submit" class="btn btn-primary" data-dismiss="modal" id="save">Save</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
+       
+    
 
-   
+
 
 
 

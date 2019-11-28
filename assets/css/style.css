@@ -14,7 +14,7 @@ h3 {
 }
 
 .game-output, .chat {
-    height: 400px;
+    height: 300px;
     width: 100%;
     overflow: auto;
     background-color: white;
@@ -28,8 +28,10 @@ h3 {
     width: 100%;
     padding: 50px;
 
+
 }
 
 button {
     min-width: 75px;
+    margin: 5px 0px 5px 0px;
 }
