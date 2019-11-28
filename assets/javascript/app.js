@@ -14,25 +14,19 @@ var database = firebase.database();
 
 var connectionsRef = database.ref("/connections");
 var connectedRef = database.ref(".info/connected");
-var gameRef = database.ref("game");
+var gameRef = database.ref("/game");
 
 var numChildren = 0;
 var guess;
 var key;
 
-var playerOne = {
+var player = {
     name: "",
-    id: null,
     wins: 0,
     losses: 0
 }
 
-var playerTwo = {
-    name: "",
-    id: null,
-    wins: 0,
-    losses: 0
-}
+
 
 //start game with no access to buttons until two players ready
 // disableRPS();
@@ -44,7 +38,7 @@ connectedRef.on("value", function (snap) {
         key = con.getKey(); 
         con.onDisconnect().remove().then(function(){
               //removes the game after all players disconnect
-              gameRef.remove();
+              gameRef.child(key).onDisconnect().remove();
         });
         
     }
@@ -55,7 +49,7 @@ connectedRef.on("value", function (snap) {
 //  /connections
 connectionsRef.on("value", function (snap) {
     numChildren = snap.numChildren();
-    $(".chat").text(numChildren);
+    $(".chat").text("num players: " + numChildren);
 
     if (numChildren == 2){
         //this is where we will enable the rps buttons for play
@@ -72,29 +66,17 @@ connectionsRef.on("value", function (snap) {
  
 $("#save-btn").on("click", function (event) {
     event.preventDefault();
-    //this player 1 player two stuff is not needed and must be removed to just "player"
     
     var name = $("#player-name").val().trim();
     if (name.length > 0) {
-        if (numChildren == 1) {
-            playerOne.name = name;
-           
-            $(".player").append(": " + playerOne.name)
-            gameRef.child(key).set({
+        player.name = name;  
+        if (numChildren < 3){
+             $(".player").append(": " + player.name)
+             gameRef.child(key).set({
                 
-                name: playerOne.name
+                name: player.name
             })
             $("#save-btn").prop("disabled", true);
-        } else if (numChildren == 2) {
-            playerTwo.name = name;
-            gameRef.child(key).set({
-                
-                name: playerTwo.name
-            })
-            $(".player").append(": " + playerTwo.name)
-            $("#save-btn").prop("disabled", true);
-
-
         } else {
             $(".game-output").text("Two players are currently playing. Try again later.");
         }
@@ -104,10 +86,7 @@ $("#save-btn").on("click", function (event) {
     }
 
     $("form").trigger("reset");
-    
-  
-    
-    
+
 });
 
 function disableRPS(){
@@ -126,7 +105,7 @@ function enableRPS(){
 
 
 $("#rock-btn").on("click", function () {
-    $(".game-output").append("you chose rock")
+    $(".game-output").append("You chose rock")
     guess = "r";
     gameRef.child(key).update({
         
@@ -139,7 +118,7 @@ $("#rock-btn").on("click", function () {
 
 $("#paper-btn").on("click", function () {
     guess = "p"
-    $(".game-output").append("you chose paper <br/>");
+    $(".game-output").append("You chose paper <br/>");
     gameRef.child(key).update({
         
         guess: guess
@@ -150,7 +129,7 @@ $("#paper-btn").on("click", function () {
 
 $("#scissors-btn").on("click", function () {
     guess = "c";
-    $(".game-output").append("you chose scissors <br/>")
+    $(".game-output").append("You chose scissors <br/>")
     gameRef.child(key).update({
         
         guess: guess
