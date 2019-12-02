@@ -28,54 +28,72 @@
             <div class="col-5">
                 <h3 class="player">Player&nbsp;</h3>
                 <section class="game-output">
-                   
+
                 </section>
+                <form>
+                        <div class="form-group">
+                            <label for="player-name"></label>
+                            <input type="text" class="form-control" id="player-name" placeholder="Name">
+                            <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
+                        </div>
+    
+                    </form>
             </div>
             <div class="col-2 text-center rps-btns">
                 <button type="button" id="rock-btn">Rock</button>
                 <button type="button" id="paper-btn">Paper</button>
                 <button type="button" id="scissors-btn">Scissors</button><br />
+                <div class="scores text-left">
+                    <section id="wins">
+                        Wins:
+                    </section>
+                    <section id="ties">
+                        Ties:
+                    </section>
+                    <section id="losses">
+                        Losses:
+                    </section>
+                </div>
             </div>
             <div class="col-5">
                 <h3>Chat</h3>
                 <section class="chat">
-                    chat placeholder
+                    
+                </section>
+                <section class="msg-input">
+                    <form>
+
+                        <div class="form-group">
+                            <label for="text-area"><strong>Message your opponent</strong></label>
+                            <textarea class="form-control" id="text-area" rows="3"></textarea>
+                            <button type="submit" class="btn btn-primary" id="msg-btn">Send</button>
+                        </div>
+                    </form>
                 </section>
 
             </div>
 
         </div>
-        <div class="row">
-            <div class="col-5">
-                <form>
-                    <div class="form-group">
-                        <label for="player-name"></label>
-                        <input type="text" class="form-control" id="player-name" placeholder="Name">
-                        <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
+  
         <!-- MODAL -->
         <div class="modal fade" id="oops-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title"> Alert </h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                        <h5 class="modal-title"> Alert </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body" id="modal-message">
-                         A player has disconnected.
+                        A player has disconnected.
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
-                  </div>
                 </div>
-              </div>
+            </div>
+        </div>
 
     </div>
 
