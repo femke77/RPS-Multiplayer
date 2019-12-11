@@ -1,9 +1,10 @@
 /** TODO:
  *     Control play with button disabling
- *     Add names to chat functionality
- * ----------------------------------------------------
+ *     adding a name will have numChildren connections listener go off again...can be fixed w button disabling
+ * -----------------------------------------------------
  *     
  *     Make a nicer element for player scores
+ *     Make the whole thing look nicer
  */
 
  var firebaseConfig = {
@@ -39,9 +40,8 @@ var opponent = {
     guess: ""
 }
 
-
-//start game with no access to buttons until two players ready
-// disableRPS();
+//start game with no access to buttons until name input. Player can't chose R P S or chat
+disableRPS();
 
 //  .info/connected (t/f). This function listens for connection/disconnection and assigns unique key in chronological order
 connectedRef.on("value", function (snap) {
@@ -53,12 +53,9 @@ connectedRef.on("value", function (snap) {
               //removes the game entry and chat messages for the player when disconnected
               database.ref("/game/" + player.key).onDisconnect().remove();
               database.ref("/messages/").onDisconnect().remove();
-        });
-        
+        });       
     }
-
 });
-
 
 //  /connections   This function listens for number of connections present and stores the uid
 connectionsRef.on("value", function (snap) {
@@ -66,22 +63,16 @@ connectionsRef.on("value", function (snap) {
     console.log("num child connections: " + numChildren)
    
     if (numChildren == 2){
-        //this is where we will enable the rps buttons for play
         $(".game-output").html("Ready to play! Make your choice. <br/>")
     } else if (numChildren == 1){
-
         $(".game-output").html("Waiting for opponent... <br/>")
-    }
-
-  
+    } 
 });
 
-
-// listen for player name
+// listen for player name 
 database.ref("/connections/"  + player.key).on("child_changed", function(snap){
     player.name = snap.val().name; 
 });
-
 
 // listens for children of game and when 2 present (both users have guessed) provides a list of key/guess pairs with which to score
 database.ref("/game/").on("value", function(snap){
@@ -94,9 +85,12 @@ database.ref("/game/").on("value", function(snap){
                     guess: child.val().guess
                 });                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
         });
-        scoring(list)
+  
+        scoring(list);
+        
+       
     }
-})
+});
 
 function scoring(list){
     //first figure out which player/guess is which and assign the opponent's key and guess
@@ -127,7 +121,7 @@ function scoring(list){
         $(".game-output").append("You lost! <br/>")
         $("#losses").text("Losses: " + player.losses)
     }
-    //clear the player's game guesses
+    //remove game choice
     database.ref("/game/" + player.key).remove();
 }
 
@@ -151,6 +145,7 @@ $("#save-btn").on("click", function (event) {
         $(".game-output").text("Enter a name of at least 1 character, please.")
     }
     $("form").trigger("reset");
+    enableRPS();
 
 });
 
@@ -158,12 +153,14 @@ function disableRPS(){
     $("#rock-btn").prop("disabled", true);
     $("#paper-btn").prop("disabled", true);
     $("#scissors-btn").prop("disabled", true);
+    $("#msg-btn").prop("disabled", true);
 }
 
 function enableRPS(){
     $("#rock-btn").prop("disabled", false);
     $("#paper-btn").prop("disabled", false);
     $("#scissors-btn").prop("disabled", false);
+    $("#msg-btn").prop("disabled", false);
 }
 
                                                                                                                                                                                                                                                                                  
@@ -173,7 +170,7 @@ $("#rock-btn").on("click", function () {
     database.ref("/game/" + player.key).set({        
         guess: player.guess
     }); 
-//    disableRPS()
+
 });
 
 $("#paper-btn").on("click", function () {
@@ -182,7 +179,7 @@ $("#paper-btn").on("click", function () {
     database.ref("/game/" + player.key).set({       
         guess: player.guess
     });
-//    disableRPS()
+
 });
 
 $("#scissors-btn").on("click", function () {
@@ -191,7 +188,7 @@ $("#scissors-btn").on("click", function () {
     database.ref("/game/"+ player.key).set({
         guess: player.guess
     });
-//    disableRPS()
+
 });
 
 
@@ -205,10 +202,6 @@ $("#msg-btn").on("click", function(event){
     var msg = $("#text-area").val().trim();
     messageRef.push((player.name + ": " + msg))
     $("form").trigger("reset");
-
-
-
-
 });
 
 
@@ -217,7 +210,7 @@ messageRef.on("child_added", function(snap){
 });
 
 
-
+//error - sometimes the messages are not getting the correct name
 
 
 

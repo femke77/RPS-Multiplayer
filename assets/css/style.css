@@ -1,42 +1,72 @@
 body {
-    background-color: lightgrey;
-
+    background-image: url("../images/6.jpeg");
+    background-size: cover;
+    color: black;   
 }
 
 .header {
-    height: 100px;
+    height: 125px;
     padding: 25px;
+}
 
+h1 {   
+    font-size: 54px;
 }
 
 h3 {
-    
+    font-size: 36px;   
 }
 
 .game-output, .chat {
-    height: 300px;
+    height: 200px;
     width: 100%;
     overflow: auto;
     background-color: white;
     padding-left: 5px;
     padding-right: 5px;
     margin: 0px auto;
+    display: flex;
+    flex-direction: column-reverse;
+    color: black
 }
 
 .rps-btns {
-    height: 160px;
-    width: 100%;
-    padding: 50px;
-
+    margin-top: 50px;
 
 }
 
-button {
-    min-width: 75px;
+#msg-btn, #save-btn {
+    width: 75px;
+    height: 50px;
+    margin-top: 15px;
+}
+
+#rock-btn, #paper-btn, #scissors-btn {
+    width: 100px;
+    height: 105px;
     margin: 5px 0px 5px 0px;
 }
 
 .scores {
     margin-top: 20px;
+    font-size: 26px;
     font-weight: bold;
+    
+}
+
+.msg-input {
+    margin-top: 10px;
+ 
+}
+
+#rock-btn {
+    background-image: url("../images/r.png");
+}
+
+#paper-btn {
+    background-image: url("../images/p.png");
+}
+
+#scissors-btn {
+    background-image: url("../images/s.png");
 }
