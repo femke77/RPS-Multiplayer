@@ -15,3 +15,7 @@ Built with HTML, Bootstrap CSS, JS, and Firebase Real-time Database (no authenti
 ## How to use
 
 Enter your name (min 1 character) and hit save button. This will activate the buttons for play. When an opponent is available you will see "Ready to Play" in the game output box. Use the buttons for Rock, Paper, and Scissors to make your choice. You may change your choice as many times as you like until your opponent has made their's. You will see the results of the game in the game output box. Your scores will accumulate regardless of how many opponents you play until you exit or refresh. You may chat as you like with your opponent. Your chats will remain visible until you exit or refresh. Have fun!
+
+## Known issues
+
+Not mobile-responsive at this time. 
