@@ -1,12 +1,3 @@
-/** TODO:
- *     Control play with button disabling
- *     adding a name will have numChildren connections listener go off again...can be fixed w button disabling
- * -----------------------------------------------------
- *     
- *     Make a nicer element for player scores
- *     Make the whole thing look nicer
- */
-
  var firebaseConfig = {
     apiKey: "AIzaSyAaI2m9pi4vHSG9qX4-_2VtgP7M3tRoy68",
     authDomain: "rps-multiplayer-e819c.firebaseapp.com",
@@ -48,7 +39,6 @@ connectedRef.on("value", function (snap) {
     if (snap.val()) {
         var con = connectionsRef.push(true);      
         player.key = con.getKey(); 
-        console.log("player key: " + player.key)
         con.onDisconnect().remove().then(function(){
               //removes the game entry and chat messages for the player when disconnected
               database.ref("/game/" + player.key).onDisconnect().remove();
@@ -59,9 +49,7 @@ connectedRef.on("value", function (snap) {
 
 //  /connections   This function listens for number of connections present and stores the uid
 connectionsRef.on("value", function (snap) {
-    numChildren = snap.numChildren();
-    console.log("num child connections: " + numChildren)
-   
+    numChildren = snap.numChildren(); 
     if (numChildren == 2){
         $(".game-output").html("Ready to play! Make your choice. <br/>")
     } else if (numChildren == 1){
@@ -69,10 +57,6 @@ connectionsRef.on("value", function (snap) {
     } 
 });
 
-// listen for player name 
-database.ref("/connections/"  + player.key).on("child_changed", function(snap){
-    player.name = snap.val().name; 
-});
 
 // listens for children of game and when 2 present (both users have guessed) provides a list of key/guess pairs with which to score
 database.ref("/game/").on("value", function(snap){
@@ -84,11 +68,8 @@ database.ref("/game/").on("value", function(snap){
                     key: child.key,
                     guess: child.val().guess
                 });                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-        });
-  
-        scoring(list);
-        
-       
+        }); 
+        scoring(list);      
     }
 });
 
@@ -210,7 +191,6 @@ messageRef.on("child_added", function(snap){
 });
 
 
-//error - sometimes the messages are not getting the correct name
 
 
 
