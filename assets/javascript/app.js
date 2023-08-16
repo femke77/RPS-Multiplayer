@@ -14,7 +14,7 @@ var database = firebase.database();
 var connectionsRef = database.ref("/connections/");
 var connectedRef = database.ref(".info/connected");
 
-var numChildren = 0;
+var numChildren;
 
 var player = {
     key: "",
@@ -36,7 +36,9 @@ disableRPS();
 
 //  .info/connected (t/f). This function listens for connection/disconnection and assigns unique key in chronological order
 connectedRef.on("value", function (snap) {
+    
     if (snap.val()) {
+        if (!player.key || !opponent.key)
         var con = connectionsRef.push(true);      
         player.key = con.getKey(); 
         con.onDisconnect().remove().then(function(){
