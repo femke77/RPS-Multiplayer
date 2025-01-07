@@ -47,7 +47,7 @@ ________________________________________________________________________________
 NOT MOBILE RESPONSIVE
 
 ## Credits 
-RPS game is not my creation.
+RPS game is not my creation. <br>
 Images are from Vecteezy under the free license. <br>
 <a href="https://www.vecteezy.com/free-vector/rock-paper-scissors">Rock Paper Scissors Vectors by Vecteezy</a>
 
