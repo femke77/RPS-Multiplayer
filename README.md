@@ -44,7 +44,7 @@ ________________________________________________________________________________
 
 
 ## Known Issues 
-None
+NOT MOBILE RESPONSIVE
 
 ## Credits 
 RPS game is not my creation.
