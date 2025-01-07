@@ -38,6 +38,7 @@ disableRPS();
 connectedRef.on("value", function (snap) {
     
     if (snap.val()) {
+        // this will essentially queue any waiting person.
         if (!player.key || !opponent.key)
         var con = connectionsRef.push(true);      
         player.key = con.getKey(); 

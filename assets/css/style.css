@@ -1,20 +1,30 @@
 body {
-    background-image: url("../images/6.jpeg");
-    background-size: cover;
-    color: black;   
+    /* background-image: url("../images/6.jpeg");
+    background-size: cover; */
+    color: hotpink;
+    background-color: black;   
+    
 }
 
 .header {
     height: 175px;
     padding: 25px;
+    margin-bottom: 1rem;
+    
 }
 
 h1 {   
-    font-size: 54px;
+    font-size: 64px;
+    font-family: "Permanent Marker", serif;
+  font-weight: 200;
+  font-style: normal;
 }
 
 h3 {
-    font-size: 36px;   
+    font-size: 26px;   
+}
+h5 {
+    font-size: 19px;   
 }
 
 .game-output, .chat {
@@ -60,13 +70,20 @@ h3 {
 }
 
 #rock-btn {
-    background-image: url("../images/r.png");
+    background-image: url("../images/rock.png");
+   background-size: contain;
+    background-position: center;
+
 }
 
 #paper-btn {
-    background-image: url("../images/p.png");
+    background-image: url("../images/paper.png");
+    background-size: contain;
+    background-position: center;
 }
 
 #scissors-btn {
-    background-image: url("../images/s.png");
+    background-image: url("../images/scissors.png");
+    background-size: contain;
+    background-position: center;
 }
