@@ -117,7 +117,7 @@ $("#save-btn").on("click", function (event) {
     if (name.length > 0) {
         player.name = name;  
         if (numChildren < 3){
-             $(".player").append(": " + player.name)
+             $(".player").append(" " + player.name)
              connectionsRef.child(player.key).set({                
                 name: player.name
             })

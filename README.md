@@ -1,21 +1,58 @@
-# RPS-Multiplayer
+# Rock Paper Scissors - Multiplayer 
+  
 
-This is a web-based, two-player rock, paper, scissors game hosted by GitHub Pages. 
+   ![jQuery](https://a11ybadges.com/badge?logo=jquery) ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white) ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) 
+  
+  ## Description  ✏️
+  
+  This is the traditional RPS game with the addition of scoring and real-time chat using the Firebase Real-time database. 
 
-https://femke77.github.io/RPS-Multiplayer/
+  Only two players may play one time. A player cannot play alone. 
+  
+  ## Table of Contents 📖
+  
+  [Installation](#installation)
 
-## Screenshots
+  [Usage](#usage)
 
-![screenshot](https://user-images.githubusercontent.com/23327932/70746698-27d66900-1cdb-11ea-9b2b-eabd741b72c8.png)
+  
 
-## Tech/framework used
+  [Issues](#known-issues)
 
-Built with HTML, Bootstrap CSS, JS, and Firebase Real-time Database (no authentication required).
 
-## How to use
+  [Credits](#credits)
 
-Enter your name (min 1 character) and hit save button. This will activate the buttons for play. When an opponent is available you will see "Ready to Play" in the game output box. Use the buttons for Rock, Paper, and Scissors to make your choice. You may change your choice as many times as you like until your opponent has made their's. You will see the results of the game in the game output box. Your scores will accumulate regardless of how many opponents you play until you exit or refresh. You may chat as you like with your opponent. Your chats will remain visible until you exit or refresh. Have fun!
+  [Questions](#questions)
+  
+  ## Installation 
+  
+Clone the repository and open the index.html in the browser of your choice.n 
+  
+  ## Usage 
+  
+  Enter your name (min 1 character) and hit save button. This will activate the buttons for play. When an opponent is available you will see "Ready to Play" in the game output box. Use the buttons for Rock, Paper, and Scissors to make your choice. You may change your choice as many times as you like until your opponent has made their's. You will see the results of the game in the game output box. Your scores will accumulate regardless of how many opponents you play until you exit or refresh. You may chat as you like with your opponent. Your chats will remain visible until you exit or refresh. Have fun!
 
-## Known issues
+  ### Deployed Link
+  https://femke77.github.io/RPS-Multiplayer/
 
-Not mobile-responsive at this time. 
+### Screenshots
+![screenshot-0](assets/images/screenshot.png)
+
+
+______________________________________________________________________________________
+
+
+
+## Known Issues 
+None
+
+## Credits 
+RPS game is not my creation.
+Images are from Vecteezy under the free license. <br>
+<a href="https://www.vecteezy.com/free-vector/rock-paper-scissors">Rock Paper Scissors Vectors by Vecteezy</a>
+
+ ## Questions 
+  
+ If you have any questions about the repo or notice any bugs you want to report, open an issue or contact me directly at megan.meyers.388@gmail.com. 
+  
+  
